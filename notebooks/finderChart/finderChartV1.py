@@ -1,9 +1,9 @@
-import subprocess
+import os
 import math
 import pandas as pd
 import wget
 
-atlas = pd.read_csv('atlas.csv')
+atlas = pd.read_csv("notebooks/finderChart/atlas.csv")
 starter = 'https://irsa.ipac.caltech.edu/applications/finderchart/servlet/api?mode=getImage&file_type=pdf&subsetsize=1.0&marker=true'
 
 # Convert Panda series to arrays
@@ -16,8 +16,7 @@ id = '0'
 # Asks for Object ID, then returns ra and dec of the object is available
 # If not available, display error and ends program
 # Edit: replaces spaces in ID with underscores
-def search():
-    id = input("Enter object ID: ")
+def search(id):
     for i in range(len(objidA)):
         if id == objidA[i]:
             ra = raA[i]
@@ -25,7 +24,7 @@ def search():
             print(f'Ra={ra}, Dec={dec}')
             id = id.replace(' ', '_')
             return (id, ra, dec)
-    print('Error: search()\nInvalid id')
+    print(f'Error: search()\nInvalid id: {id}')
     exit()
 
 # Rounds input to the 5th decimal and outputs string
@@ -41,22 +40,51 @@ def makeWeb(r, d):
     print(f'Website:\n{endP}')
     return(endP)
 
-# Used to run commands
-def runcmd(cmd, verbose = False, *args, **kwargs):
-    process = subprocess.Popen(
-        cmd,
-        stdout = subprocess.PIPE,
-        stderr = subprocess.PIPE,
-        text = True,
-        shell = True
-    )
-    std_out, std_err = process.communicate()
-    if verbose:
-        print(std_out.strip(), std_err)
-    pass
+# downloads file, if not already downloaded
+def grab(id):
+    id, ra, dec = search(id)
+    website = (makeWeb(roundCords(ra),roundCords(dec)))
+    
+    # adds all file names in 'results' in a list
+    results = []
+    for file_path in os.listdir('notebooks/finderChart/results'):
+        if os.path.isfile(os.path.join('notebooks/finderChart/results', file_path)):
+            results.append(file_path)
+
+    #checks if the pdf is already downloaded
+    if (id+'.pdf') in results:
+        print(f'{id}.pdf already in results folder\n')
+    else:
+        print('Grabbing...')
+        wget.download(website, f'{id}.pdf')
+        os.rename(f'{id}.pdf', f'notebooks/finderChart/results/{id}.pdf')
+        print(f'\nDownloaded: {id}.pdf\n')
+
+# takes ids in listOfIds.txt into a list
+def listOut():
+    list = []
+    myfile = open("notebooks/finderChart/listOfIds.txt", "rt")
+    contents = myfile.read() + '\n'
+    myfile.close()
+    trys = 0
+    while len(contents) > 0:
+        index = contents.find('\n')
+        id = contents[0:index]
+        list.append(id)
+        contents = contents[index+1:]
+    return(list)
 
 
-id, ra, dec = search()
-website = (makeWeb(roundCords(ra),roundCords(dec)))
-runcmd(f'wget --output-document={id}.pdf {website}', verbose = True)
-runcmd(f'mv {id}.pdf results')
+# ask = input('Single search? (y/n)\n')
+# if ask == 'y':
+#     id = input('Enter object ID: ')
+#     grab(id)
+# elif ask == 'n':
+listOfIds = listOut()
+if len(listOfIds) > 0:
+    for obj in range(len(listOfIds)):
+        grab(listOfIds[obj])
+else:
+    print('No ids in the ')
+# else:
+#     print('Invalid input')
