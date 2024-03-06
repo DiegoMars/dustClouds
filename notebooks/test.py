@@ -7,7 +7,7 @@ while len(contents) > 0 or trys > 10:
     index = contents.find('\n')
     id = contents[0:index]
     list.append(id)
-    contents = contents[index+2:]
+    contents = contents[index+1:]
     trys += 1
 
 print(list)
