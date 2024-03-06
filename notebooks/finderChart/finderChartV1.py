@@ -3,8 +3,12 @@ import math
 import pandas as pd
 import wget
 
-atlas = pd.read_csv("notebooks/finderChart/atlas.csv")
+atlas = pd.read_csv("atlas.csv")
 starter = 'https://irsa.ipac.caltech.edu/applications/finderchart/servlet/api?mode=getImage&file_type=pdf&subsetsize=1.0&marker=true'
+
+# file paths
+txtFile = 'listOfIds.txt'
+resultsFolder = 'results'
 
 # Convert Panda series to arrays
 objidA = pd.Series(atlas['objid']).array
@@ -47,8 +51,8 @@ def grab(id):
     
     # adds all file names in 'results' in a list
     results = []
-    for file_path in os.listdir('notebooks/finderChart/results'):
-        if os.path.isfile(os.path.join('notebooks/finderChart/results', file_path)):
+    for file_path in os.listdir(resultsFolder):
+        if os.path.isfile(os.path.join(resultsFolder, file_path)):
             results.append(file_path)
 
     #checks if the pdf is already downloaded
@@ -57,13 +61,13 @@ def grab(id):
     else:
         print('Grabbing...')
         wget.download(website, f'{id}.pdf')
-        os.rename(f'{id}.pdf', f'notebooks/finderChart/results/{id}.pdf')
+        os.rename(f'{id}.pdf', f'{resultsFolder}/{id}.pdf')
         print(f'\nDownloaded: {id}.pdf\n')
 
 # takes ids in listOfIds.txt into a list
 def listOut():
     list = []
-    myfile = open("notebooks/finderChart/listOfIds.txt", "rt")
+    myfile = open(txtFile, "rt")
     contents = myfile.read() + '\n'
     myfile.close()
     trys = 0
