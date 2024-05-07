@@ -1,13 +1,22 @@
-list = []
-myfile = open("notebooks/finderChart/listOfIds.txt", "rt")
-contents = myfile.read() + '\n'
-myfile.close()
-trys = 0
-while len(contents) > 0 or trys > 10:
-    index = contents.find('\n')
-    id = contents[0:index]
-    list.append(id)
-    contents = contents[index+1:]
-    trys += 1
+def reverse_search(string):
+    # Reverse the string to search from the end
+    reversed_string = string[::-1]
+    
+    # Find the index of the first "\" from the end
+    slash_index = reversed_string.find("/")
+    
+    if slash_index == -1:
+        print("No '\\' found in the string.")
+        return
+    
+    # Get the substring after the "\" and reverse it back
+    after_slash = reversed_string[:slash_index][::-1]
+    
+    # Split the string by "_" and return the result
+    parts = after_slash.split("_")
+    return parts
 
-print(list)
+# Example usage:
+input_string = "some/path/to/file_name1_name2_name3.txt"
+result = reverse_search(input_string)
+print("After '/' and split by '_':", result)
