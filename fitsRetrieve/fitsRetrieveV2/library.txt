@@ -1,54 +1,6 @@
-ID: SSTSL2_J083825.07-531910.5
-RA: 129.604478 DEC: -53.319597 RADIUS: 0.0014
-Number of Links: 1
-Included Bands: I4 
-https://irsa.ipac.caltech.edu/SIA?COLLECTION=spitzer_sha&RESPONSEFORMAT=CSV&POS=circle+129.60448+-53.3196+0.0014
-
-ID: SSTSL2_J084041.74-530834.4
-RA: 130.173924 DEC: -53.142905 RADIUS: 0.0014
-Number of Links: 1
-Included Bands: I4 
-https://irsa.ipac.caltech.edu/SIA?COLLECTION=spitzer_sha&RESPONSEFORMAT=CSV&POS=circle+130.17392+-53.1429+0.0014
-
-ID: SSTSL2_J004151.36-712355.6
-RA: 10.464014 DEC: -71.398793 RADIUS: 0.0014
+ID: SSTSL2_J004332.32-743907.5
+RA: 10.884686 DEC: -74.652088 RADIUS: 0.0014
 Number of Links: 2
 Included Bands: I4 
-https://irsa.ipac.caltech.edu/SIA?COLLECTION=spitzer_sha&RESPONSEFORMAT=CSV&POS=circle+10.46401+-71.39879+0.0014
-
-ID: SSTSL2_J053354.87-005229.9
-RA: 83.478654 DEC: -0.874999 RADIUS: 0.0014
-Number of Links: 1
-Included Bands: I4 
-https://irsa.ipac.caltech.edu/SIA?COLLECTION=spitzer_sha&RESPONSEFORMAT=CSV&POS=circle+83.47865+-0.875+0.0014
-
-ID: SSTSL2_J021602.36-742622.2
-RA: 34.009861 DEC: -74.439506 RADIUS: 0.0014
-Number of Links: 4
-Included Bands: I4 
-https://irsa.ipac.caltech.edu/SIA?COLLECTION=spitzer_sha&RESPONSEFORMAT=CSV&POS=circle+34.00986+-74.43951+0.0014
-
-ID: SSTSL2_J004337.13-734709.9
-RA: 10.904709 DEC: -73.78609 RADIUS: 0.0014
-Number of Links: 6
-Included Bands: I4 
-https://irsa.ipac.caltech.edu/SIA?COLLECTION=spitzer_sha&RESPONSEFORMAT=CSV&POS=circle+10.90471+-73.78609+0.0014
-
-ID: SSTSL2_J053123.18-015323.0
-RA: 82.846594 DEC: -1.889736 RADIUS: 0.0014
-Number of Links: 1
-Included Bands: I4 
-https://irsa.ipac.caltech.edu/SIA?COLLECTION=spitzer_sha&RESPONSEFORMAT=CSV&POS=circle+82.84659+-1.88974+0.0014
-
-ID: SSTSL2_J003121.18-740243.0
-RA: 7.838259 DEC: -74.045288 RADIUS: 0.0014
-Number of Links: 2
-Included Bands: I4 
-https://irsa.ipac.caltech.edu/SIA?COLLECTION=spitzer_sha&RESPONSEFORMAT=CSV&POS=circle+7.83826+-74.04529+0.0014
-
-ID: SSTSL2_J050738.35-701837.8
-RA: 76.909811 DEC: -70.310527 RADIUS: 0.0014
-Number of Links: 2
-Included Bands: I4 
-https://irsa.ipac.caltech.edu/SIA?COLLECTION=spitzer_sha&RESPONSEFORMAT=CSV&POS=circle+76.90981+-70.31053+0.0014
+https://irsa.ipac.caltech.edu/SIA?COLLECTION=spitzer_sha&RESPONSEFORMAT=CSV&POS=circle+10.88469+-74.65209+0.0014
 
